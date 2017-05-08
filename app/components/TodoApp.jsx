@@ -1,10 +1,37 @@
 import React, { Component } from 'react'
 
+import TodoList from 'TodoList'
+
 class TodoApp extends Component {
+
+  constructor() {
+    super()
+
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          text: 'Walk the dog'
+        }, {
+          id: 2,
+          text: 'Clean the yard'
+        }, {
+          id: 3,
+          text: 'Leave mail on porch'
+        }, {
+          id: 4,
+          text: 'Play video games'
+        }
+      ]
+    }
+  }
+
   render() {
+    const { todos } = this.state
+
     return (
-      <div className="text-center">
-        <h1>Todo App</h1>
+      <div>
+        <TodoList todos={todos} />
       </div>
     )
   }
