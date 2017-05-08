@@ -22,6 +22,10 @@ module.exports = {
   },
   resolve: {
     root: __dirname,
+    modulesDirectories: [
+      'node_modules',
+      'app/components' // Adds all files without alias for each file by looking in directory for specified file
+    ],
     alias: {// changes the path to user require('Greeter') instead of require('./components/Greeter') 
       applicationStyles: 'app/styles/app.scss'
     },
