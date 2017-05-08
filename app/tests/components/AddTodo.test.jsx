@@ -12,25 +12,27 @@ describe('AddTodo', () => {
   })
 
   it('should call addTodo if valid todo entered', () => {
-    let spy = expect.createSpy();
-    let addTodoForm = TestUtils.renderIntoDocument(<AddTodo addTodo={spy} />)
-    let $el = $(ReactDOM.findDOMNode(addTodoForm))
+    const todoItem = 'Get milk'
+    const spy = expect.createSpy();
+    const addTodoForm = TestUtils.renderIntoDocument(<AddTodo addTodo={spy} />)
+    const $el = $(ReactDOM.findDOMNode(addTodoForm))
 
-    addTodoForm.refs.todo.value = 'Get Milk'
+    addTodoForm.refs.todo.value = todoItem
     TestUtils.Simulate.submit($el.find('form')[0])
 
-    expect(spy).toHaveBeenCalledWith('Get Milk')
+    expect(spy).toHaveBeenCalledWith(todoItem)
   })
 
   it('should not call addTodo if no data for todo entered', () => {
-    let spy = expect.createSpy();
-    let addTodoForm = TestUtils.renderIntoDocument(<AddTodo addTodo={spy} />)
-    let $el = $(ReactDOM.findDOMNode(addTodoForm))
+    const todoItem = ''
+    const spy = expect.createSpy();
+    const addTodoForm = TestUtils.renderIntoDocument(<AddTodo addTodo={spy} />)
+    const $el = $(ReactDOM.findDOMNode(addTodoForm))
 
     addTodoForm.refs.todo.value = ''
     TestUtils.Simulate.submit($el.find('form')[0])
 
-    expect(spy).toNotHaveBeenCalled()
+    expect(spy).toNotHaveBeenCalled(todoItem)
   })
 
 })
