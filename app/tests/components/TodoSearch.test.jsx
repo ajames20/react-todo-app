@@ -12,7 +12,7 @@ describe('TodoSearch', () => {
   })
 
   it('should call onSearch with entered input text', () => {
-    const searchText = 'Dog'
+    const searchText = 'Cat'
     const spy = expect.createSpy();
     const todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />)
     const $el = $(ReactDOM.findDOMNode(todoSearch))
@@ -20,7 +20,7 @@ describe('TodoSearch', () => {
     todoSearch.refs.searchText.value = searchText
     TestUtils.Simulate.change(todoSearch.refs.searchText)
 
-    expect(spy).toHaveBeenCalledWith(false, 'Dog')
+    expect(spy).toHaveBeenCalledWith(false, 'Cat')
   })
 
   it('should call onSearch with proper checked value', () => {
