@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
+// Components
 import TodoList from 'TodoList'
 import AddTodo from 'AddTodo'
+import TodoSearch from 'TodoSearch';
 
 class TodoApp extends Component {
 
@@ -9,6 +11,8 @@ class TodoApp extends Component {
     super()
 
     this.state = {
+      showCompleted: false,
+      searchText: '',
       todos: [
         {
           id: 1,
@@ -28,7 +32,14 @@ class TodoApp extends Component {
   }
 
   handleAddTodo(text) {
-    console.log('new todo: ' + text)
+    console.log(`new todo: ${text}`)
+  }
+
+  handleSearch = (showCompleted, searchText) => {
+    this.setState({
+      showCompleted: showCompleted,
+      searchText: searchText.toLowerCase()
+    })
   }
 
   render() {
@@ -36,6 +47,7 @@ class TodoApp extends Component {
 
     return (
       <div>
+        <TodoSearch onSearch={this.handleSearch} />
         <TodoList todos={todos} />
         <AddTodo addTodo={this.handleAddTodo} />
       </div>
