@@ -24,13 +24,12 @@ describe('TodoSearch', () => {
   })
 
   it('should call onSearch with proper checked value', () => {
-    const searchCheckbox = true
     const spy = expect.createSpy();
     const todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />)
     const $el = $(ReactDOM.findDOMNode(todoSearch))
 
-    todoSearch.refs.showCompleted.checked = searchCheckbox
-    TestUtils.Simulate.change(todoSearch.refs.searchText)
+    todoSearch.refs.showCompleted.checked = true
+    TestUtils.Simulate.change(todoSearch.refs.showCompleted)
 
     expect(spy).toHaveBeenCalledWith(true, '')
   })
