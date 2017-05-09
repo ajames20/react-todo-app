@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "git push heroku master"
   },
-  "author": "Andrew Mead",
+  "author": "Andrew James",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
