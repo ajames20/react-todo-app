@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import uuid from 'node-uuid'
 
+
 // Components
 import TodoList from 'TodoList'
 import AddTodo from 'AddTodo'
 import TodoSearch from 'TodoSearch'
+
+// Modules I have built
+import TodoAPI from 'TodoAPI'
 
 class TodoApp extends Component {
 
@@ -14,26 +18,12 @@ class TodoApp extends Component {
     this.state = {
       showCompleted: false,
       searchText: '',
-      todos: [
-        {
-          id: uuid(),
-          text: 'Walk the dog',
-          completed: true
-        }, {
-          id: uuid(),
-          text: 'Clean the yard',
-          completed: false
-        }, {
-          id: uuid(),
-          text: 'Leave mail on porch',
-          completed: true
-        }, {
-          id: uuid(),
-          text: 'Play video games',
-          completed: false
-        }
-      ]
+      todos: TodoAPI.getTodos()
     }
+  }
+
+  componentDidUpdate() {
+    TodoAPI.setTodos(this.state.todos)
   }
 
   handleAddTodo = (text) => {
