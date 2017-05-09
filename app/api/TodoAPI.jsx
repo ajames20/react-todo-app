@@ -18,10 +18,12 @@ export default {
       console.log(error)
     }
 
-    if ($.isArray(todos)) {
-      return todos
-    } else {
-      return []
-    }
+    return $.isArray(todos) ? todos : [] //Same as if else block below
+
+    // if ($.isArray(todos)) {
+    //   return todos
+    // } else { 
+    //   return []
+    // }
   }
 }
