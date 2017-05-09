@@ -19,11 +19,20 @@ export default {
     }
 
     return $.isArray(todos) ? todos : [] //Same as if else block below
+  },
 
-    // if ($.isArray(todos)) {
-    //   return todos
-    // } else { 
-    //   return []
-    // }
+  filterTodos: (todos, showCompleted, searchText) => {
+    let filteredTodos = todos // Const is read only and can not be used here
+
+    // FILTER by showCompleted 
+    filteredTodos = filteredTodos.filter((todo) => {
+      return !todo.completed || showCompleted
+    })
+
+    // FILTER by searchText
+
+    //SORT todos with non completed first
+
+    return filteredTodos
   }
 }
