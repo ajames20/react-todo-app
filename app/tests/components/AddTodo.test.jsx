@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import expect from 'expect'
-const $ = require('jQuery')
-const TestUtils = require('react-addons-test-utils')
+import $ from 'jQuery'
+import TestUtils from 'react-addons-test-utils'
 
 import AddTodo from 'AddTodo';
 
