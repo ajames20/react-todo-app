@@ -1,5 +1,5 @@
-var webpack = require('webpack')
-var path = require('path')
+var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -12,8 +12,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      '$': 'jquery',
-      'jQuery': 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ],
   output: {
@@ -27,19 +27,21 @@ module.exports = {
       './app/components', // Adds all files without alias for each file by looking in directory for specified file
       './app/api'
     ],
-    alias: {// changes the path to user require('Greeter') instead of require('./components/Greeter') 
+    alias: {
+      // changes the path to user require('Greeter') instead of require('./components/Greeter')
       applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']
   },
   module: {
-    loaders: [// allows for webpack to handle .jsx
+    loaders: [
+      // allows for webpack to handle .jsx
       {
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0']
         },
-        test: /\.jsx?$/,// regex to apply babel loader to all .jsx files
+        test: /\.jsx?$/, // regex to apply babel loader to all .jsx files
         exclude: /(node_modules|bower_components)/ // exludes these files so they are not run through webpack
       }
     ]
@@ -50,4 +52,4 @@ module.exports = {
     ]
   },
   devtool: 'cheap-module-eval-source-map' // source maps for debugging
-}
+};

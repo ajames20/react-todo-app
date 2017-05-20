@@ -1,37 +1,40 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import expect from 'expect'
-import $ from 'jQuery'
-import TestUtils from 'react-addons-test-utils'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import expect from 'expect';
+import $ from 'jQuery';
+import TestUtils from 'react-addons-test-utils';
 
 import TodoSearch from 'TodoSearch';
 
 describe('TodoSearch', () => {
   it('should exist', () => {
-    expect(TodoSearch).toExist()
-  })
+    expect(TodoSearch).toExist();
+  });
 
   it('should call onSearch with entered input text', () => {
-    const searchText = 'Cat'
+    const searchText = 'Cat';
     const spy = expect.createSpy();
-    const todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />)
-    const $el = $(ReactDOM.findDOMNode(todoSearch))
+    const todoSearch = TestUtils.renderIntoDocument(
+      <TodoSearch onSearch={spy} />
+    );
+    const $el = $(ReactDOM.findDOMNode(todoSearch));
 
-    todoSearch.refs.searchText.value = searchText
-    TestUtils.Simulate.change(todoSearch.refs.searchText)
+    todoSearch.refs.searchText.value = searchText;
+    TestUtils.Simulate.change(todoSearch.refs.searchText);
 
-    expect(spy).toHaveBeenCalledWith(false, 'Cat')
-  })
+    expect(spy).toHaveBeenCalledWith(false, 'Cat');
+  });
 
   it('should call onSearch with proper checked value', () => {
     const spy = expect.createSpy();
-    const todoSearch = TestUtils.renderIntoDocument(<TodoSearch onSearch={spy} />)
-    const $el = $(ReactDOM.findDOMNode(todoSearch))
+    const todoSearch = TestUtils.renderIntoDocument(
+      <TodoSearch onSearch={spy} />
+    );
+    const $el = $(ReactDOM.findDOMNode(todoSearch));
 
-    todoSearch.refs.showCompleted.checked = true
-    TestUtils.Simulate.change(todoSearch.refs.showCompleted)
+    todoSearch.refs.showCompleted.checked = true;
+    TestUtils.Simulate.change(todoSearch.refs.showCompleted);
 
-    expect(spy).toHaveBeenCalledWith(true, '')
-  })
-
-})
+    expect(spy).toHaveBeenCalledWith(true, '');
+  });
+});

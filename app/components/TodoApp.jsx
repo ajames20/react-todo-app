@@ -1,33 +1,31 @@
-import React, { Component } from 'react'
-import uuid from 'node-uuid'
-import moment from 'moment'
-
+import React, { Component } from 'react';
+import uuid from 'node-uuid';
+import moment from 'moment';
 
 // Components
-import TodoList from 'TodoList'
-import AddTodo from 'AddTodo'
-import TodoSearch from 'TodoSearch'
+import TodoList from 'TodoList';
+import AddTodo from 'AddTodo';
+import TodoSearch from 'TodoSearch';
 
 // Modules I have built
-import TodoAPI from 'TodoAPI'
+import TodoAPI from 'TodoAPI';
 
 class TodoApp extends Component {
-
   constructor() {
-    super()
+    super();
 
     this.state = {
       showCompleted: false,
       searchText: '',
       todos: TodoAPI.getTodos()
-    }
+    };
   }
 
   componentDidUpdate() {
-    TodoAPI.setTodos(this.state.todos)
+    TodoAPI.setTodos(this.state.todos);
   }
 
-  handleAddTodo = (text) => {
+  handleAddTodo = text => {
     this.setState({
       todos: [
         ...this.state.todos,
@@ -39,31 +37,31 @@ class TodoApp extends Component {
           completedAt: undefined
         }
       ]
-    })
-  }
+    });
+  };
 
-  handleToggle = (id) => {
-    let updatedTodos = this.state.todos.map((todo) => {
+  handleToggle = id => {
+    let updatedTodos = this.state.todos.map(todo => {
       if (todo.id === id) {
-        todo.completed = !todo.completed
-        todo.completedAt = todo.completed ? moment().unix() : undefined
+        todo.completed = !todo.completed;
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
       }
-      return todo
-    })
+      return todo;
+    });
 
-    this.setState({ todos: updatedTodos })
-  }
+    this.setState({ todos: updatedTodos });
+  };
 
   handleSearch = (showCompleted, searchText) => {
     this.setState({
       showCompleted: showCompleted,
       searchText: searchText.toLowerCase()
-    })
-  }
+    });
+  };
 
   render() {
-    const { todos, showCompleted, searchText } = this.state
-    const filterdTodos = TodoAPI.filterTodos(todos, showCompleted, searchText)
+    const { todos, showCompleted, searchText } = this.state;
+    const filterdTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return (
       <div>
@@ -78,8 +76,8 @@ class TodoApp extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default TodoApp
+export default TodoApp;
