@@ -19,7 +19,7 @@ export default {
       console.log(error);
     }
 
-    return $.isArray(todos) ? todos : []; //Same as if else block below
+    return $.isArray(todos) ? todos : [];
   },
 
   filterTodos: (todos, showCompleted, searchText) => {
